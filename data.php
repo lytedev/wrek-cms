@@ -87,7 +87,7 @@ function addUser($user, $password)
 function getPost($id)
 {
 	$result = query("SELECT * FROM `posts` WHERE `id` = $id;");
-	if ($result)
+	if (results($result) > 0)
 	{
 		$post = Array();
 		$post['id'] = result($result, 0, "id");
@@ -96,7 +96,7 @@ function getPost($id)
 		$post['date'] = strtotime(result($result, 0, "date"));
 		$post['description'] = result($result, 0, "description");
 		$post['img'] = result($result, 0, "img");
-		$post['visisble'] = result($result, 0, "visislbe");
+		$post['visible'] = result($result, 0, "visible");
 		return $post;
 	}
 	else

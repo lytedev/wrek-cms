@@ -82,7 +82,7 @@ function echoPost($post, $entirePost = false)
 		if ($entirePost)
 		{ ?>
 		
-			<h2><?php echo $post['title']; ?></h2>
+			<h2 class="post-title"><?php echo $post['title']; ?></h2>
 			<p><?php echo $post['date']; ?></p>
 			<?php echo $post['content']; ?>
 		
@@ -90,17 +90,14 @@ function echoPost($post, $entirePost = false)
 		else
 		{ ?>
 		
-			<h2><?php echo $post['title']; ?></h2>
+			<h3 class="post-title"><?php echo $post['title']; ?></h3>
 			<?php echo $post['description']; ?>
 			
 		<?php }	
 	}
 	else	
 	{
-		if ($noLost === false)
-		{
-			userLost();
-		}
+		userLost();
 	}
 }
 
@@ -113,10 +110,7 @@ function echoPosts($numToShow, $entirePost = false)
 	}
 	if (count($posts) < 1)
 	{
-		if ($noLost === false)
-		{
-			userLost();
-		}
+		userLost();
 	}
 }
 
