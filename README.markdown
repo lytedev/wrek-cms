@@ -1,4 +1,4 @@
-### Note: This project is not complete or functional!
+### Note: This project is not complete or functional! Nor is it meant to function for every individual once complete. This code is simply free to those who would want to use and modify it to fit their needs. 
 
 # LyteDev CMS
 
@@ -10,9 +10,6 @@
 * Updated footer 
 * Blog functionality updated (still not entirely working) 
 
-Major changes:
-* Initial version
-
 ## Contributors: 
 * Daniel Flanagan 
 
@@ -20,4 +17,4 @@ Major changes:
 This work is under a version 3 GPL. 
 
 ## Summary:
-LyteDev CMS is a super lightweight content management system built for the LyteDev site. Based off of the HTML5 Boilerplate. 
+LyteDev CMS is a super lightweight content management system built for the LyteDev site. Based on the HTML5 Boilerplate. 
