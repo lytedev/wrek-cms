@@ -6,7 +6,7 @@
 #### v.0.1 : February 10th, 2011
 * Initial version
 
-#### v.0.2 : October
+#### v.0.2 : February 10th, 2011
 * Updated footer 
 * Blog functionality updated (still not entirely working) 
 
