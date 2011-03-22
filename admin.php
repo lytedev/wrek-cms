@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php require_once("header.php"); 
 
 // Recommendation: Do not edit!
@@ -132,15 +131,3 @@ if ($action == "post")
 </div>
 
 <?php } require_once("footer.php"); ?>
-=======
-<?php
-
-if (isset($_GET['e']))
-{
-	$e = $_GET['e'];
-	echo str_replace('"', '\"', $e);
-}
-
-?>
-
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f

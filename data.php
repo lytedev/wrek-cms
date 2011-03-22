@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 $dataSetup = true;
 $connection = 0;
 $database = 0;
@@ -61,14 +60,6 @@ else
 function query($query)
 {
 	return mysql_query($query) or die("Query Failed: " . $query);
-=======
-mysql_connect(cfg("dbhost"), cfg("dbuser"), cfg("dbpass"));
-mysql_select_db(cfg("dbname"));
-
-function query($query)
-{
-	return mysql_query($query);
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 
 function result($results, $index, $column)
@@ -84,7 +75,6 @@ function result($results, $index, $column)
 	}
 }
 
-<<<<<<< HEAD
 function easyInsert($table, $columns, $values)
 {
 	$colString = "";
@@ -107,8 +97,6 @@ function easyInsert($table, $columns, $values)
 	query($query);
 }
 
-=======
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 function results($results)
 {
 	if (is_bool($results))
@@ -137,11 +125,7 @@ function safe($str)
 
 function mostlySafe($str)
 {
-<<<<<<< HEAD
 	return str_replace("'", "\'", str_replace('"', '\"', $str));
-=======
-	return str_replace('"', '\"', $e);
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 
 // User Data Functions
@@ -176,11 +160,7 @@ function addUser($user, $password)
 }
 
 // Blog Data Functions
-<<<<<<< HEAD
 function getPost($id, $datefmt)
-=======
-function getPost($id)
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 {
 	$result = query("SELECT * FROM `posts` WHERE `id` = $id;");
 	if (results($result) > 0)
@@ -189,11 +169,7 @@ function getPost($id)
 		$post['id'] = result($result, 0, "id");
 		$post['title'] = result($result, 0, "title");
 		$post['content'] = result($result, 0, "content");
-<<<<<<< HEAD
 		$post['date'] = date($datefmt, strtotime(result($result, 0, "date")));
-=======
-		$post['date'] = strtotime(result($result, 0, "date"));
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 		$post['description'] = result($result, 0, "description");
 		$post['img'] = result($result, 0, "img");
 		$post['visible'] = result($result, 0, "visible");
@@ -205,7 +181,6 @@ function getPost($id)
 	}
 }
 
-<<<<<<< HEAD
 function getPosts($numToShow, $datefmt, $offset, $visible = 1)
 {
 	$visibleString = "WHERE `visible` = $visible ";
@@ -214,17 +189,11 @@ function getPosts($numToShow, $datefmt, $offset, $visible = 1)
 		$visibleString = "";
 	}
 	$result = query("SELECT * FROM `posts` " . $visibleString . "ORDER BY `date` DESC LIMIT " . $numToShow . " OFFSET " . $offset . ";");
-=======
-function getPosts($numToShow)
-{
-	$result = query("SELECT * FROM `posts` ORDER BY `date` DESC");
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 	$num = results($result);
 	$posts = Array();
 	for ($i = 0; $i < $num; $i++)
 	{
 		$id = result($result, $i, "id");
-<<<<<<< HEAD
 		$posts[$i] = getPost($id, $datefmt);
 	}
 	$posts[0]['more'] = false;
@@ -232,14 +201,10 @@ function getPosts($numToShow)
 	if ($num2 > $num)
 	{
 		$posts[0]['more'] = true;
-=======
-		$posts[$i] = getPost($id);
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 	}
 	return $posts;
 }
 
-<<<<<<< HEAD
 function editPost($id, $title, $content, $description, $visible = true, $img = "noimage")
 {
 	query("DELETE FROM `posts` WHERE `id` = " . $id . " LIMIT 1;");
@@ -254,12 +219,6 @@ function addPost($title, $content, $description, $visible = true, $img = "noimag
 	$date = date("Y-m-d H:i:s");
 	$columns = array("title", "content", "description", "date", "img", "visible");
 	$values = array($title, $content, $description, $date, $img, $visible);
-=======
-function addPost($title, $content, $description, $visible = true, $img = "noimage")
-{
-	$columns = array("title", "content", "description", "img", "author", "visible");
-	$values = array($title, $content, $description, $img, $author, $visible);
->>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 	easyInsert("posts", $columns, $values);
 }
 
