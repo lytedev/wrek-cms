@@ -52,8 +52,9 @@ function echoControlPanel()
 <?php echo " <small class=\"right\">$loginError</small>"; ?>
 </h3>
 <div class="desc">
-	<a href="<?php ecfg("root"); ?>/admin.php?a=post">New Post</a> |
-	<a href="<?php ecfg("root"); ?>/admin.php?a=edit">Edit Posts</a>
+	<a href="<?php ecfg("root"); ?>/admin.php?a=post">New Post</a>
+	| <a href="<?php ecfg("root"); ?>/admin.php?a=edit">Edit Posts</a>
+	| <a href="<?php ecfg("root"); ?>/admin.php?a=delete">Delete Posts</a>
 </div>
 
 <?php }
@@ -102,7 +103,7 @@ if ($action == "post")
 		</div>
 	
 	<?php }
-	else	
+	else 
 	{
 		$offset = 0;
 		if (isset($_GET['o']))
@@ -113,7 +114,44 @@ if ($action == "post")
 		echoPosts(cfg("maxadminposts"), 2, $offset, true, 2); 
 	} ?>
 
-<?php } else { echoControlPanel(); } } else { ?> 
+<?php } else if ($action == "delete") 
+{
+	if (isset($_GET['confirmed']) && isset($_GET['e']))
+	{ $post = getPost($_GET['confirmed'], "");
+	?>
+	
+		<?php deletePost(safe($_GET['e'])); ?>
+		<h3>Delete Post
+		<?php echo ' <small>' . $status . '</small> <small class="right"><a href="' . cfg("root") . "/admin.php" . '">Back to Control Panel</a></small>'; ?>
+		</h3>
+		<div class="desc">
+			<p class="top">Post <?php echo $_GET['e']; ?> deleted.</p>
+			<p><a href="<?php ecfg("root"); ?>/admin.php">Back to Control Panel</a></p>
+		</div>
+	
+	<?php }
+	else if ($_GET['e'])
+	{ ?>
+		<h3>Delete Post
+		<?php echo ' <small>' . $status . '</small> <small class="right"><a href="' . cfg("root") . "/admin.php" . '">Back to Control Panel</a></small>'; ?>
+		</h3>
+		<div class="desc">
+			<p class="top">Are you sure you want to delete post <?php echo $_GET['e']; ?>?</p>
+			<p><a href="<?php ecfg("root"); ?>/admin.php">No</a> | <a href="<?php ecfg("root"); ?>/admin.php?a=delete&e=<?php echo $_GET['e']; ?>&confirmed">Yes</a></p>
+		</div>
+	<?php }
+	else 
+	{
+		$offset = 0;
+		if (isset($_GET['o']))
+		{
+			$offset = $_GET['o'];
+		}
+		// function echoPosts($numToShow, $entirePost = false, $offset = 0, $more = false)
+		echoPosts(cfg("maxadminposts"), 2, $offset, true, 2); 
+	}
+}
+else { echoControlPanel(); } } else { ?> 
 
 <?php echoControlPanel(); ?>
 

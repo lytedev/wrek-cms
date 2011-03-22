@@ -124,6 +124,7 @@ $canLose = true;
 
 function echoPost(&$post, $entirePost = false)
 {	
+	global $action;
 	if ($post && $post !== null && count($post) > 1)
 	{	
 		$post['comments'] = false;	
@@ -156,7 +157,7 @@ function echoPost(&$post, $entirePost = false)
 			
 		<?php }	else if ($entirePost == 2) { ?>
 		
-			<a href="admin.php?a=edit&e=<?php echo $post['id']; ?>">
+			<a href="admin.php?a=<?php echo $action; ?>&e=<?php echo $post['id']; ?>">
 				<h3 class="post-title">
 					<?php echo $post['title']; ?>
 					<small><?php if ($post['visible'] == 1) { echo "Post"; } else { echo "Draft"; } ?></small>
@@ -167,7 +168,7 @@ function echoPost(&$post, $entirePost = false)
 				</div>
 			</a>
 		
-		<?php }
+		<?php }	
 	}
 	else	
 	{

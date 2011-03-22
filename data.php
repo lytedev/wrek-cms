@@ -205,9 +205,14 @@ function getPosts($numToShow, $datefmt, $offset, $visible = 1)
 	return $posts;
 }
 
+function deletePost($id)
+{
+	return query("DELETE FROM `posts` WHERE `id` = " . $id . " LIMIT 1;");
+}
+
 function editPost($id, $title, $content, $description, $visible = true, $img = "noimage")
 {
-	query("DELETE FROM `posts` WHERE `id` = " . $id . " LIMIT 1;");
+	deletePost($id);
 	$date = date("Y-m-d H:i:s");
 	$columns = array("id", "title", "content", "description", "date", "img", "author", "visible");
 	$values = array($id, $title, $content, $description, $date, $img, $author, $visible);
