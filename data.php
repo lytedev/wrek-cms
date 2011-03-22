@@ -37,7 +37,7 @@ if (cfg("configured") === false)
 COLLATE='latin1_swedish_ci'
 ENGINE=MyISAM
 ROW_FORMAT=DEFAULT
-AUTO_INCREMENT=17");
+AUTO_INCREMENT=0");
 		echo "Complete!<br />";
 		echo "<b style=\"color:#08f\">SUCCESS</b> - Installation Complete! Set 'configured' to 'true' or comment that line in \"configvalues.php\" and visit <a href=\"admin.php\">the admin page</a>.
 		If you have already seen this message, be sure to follow the above instructions!";

@@ -17,9 +17,9 @@ $description = "A post.";
 
 if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['description']) && isset($_GET['e']))
 {
-	$title = $_POST['title'];
-	$content = $_POST['content'];
-	$description = $_POST['description'];
+	$title = str_replace("\\\"", "\"", $_POST['title']);
+	$content = str_replace("\\\"", "\"", $_POST['content']);
+	$description = str_replace("\\\"", "\"", $_POST['description']);
 	$post = true;
 	$status = "Posted!";
 	if (isset($_POST['save']))
@@ -32,9 +32,9 @@ if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['descript
 
 if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['description']))
 {
-	$title = $_POST['title'];
-	$content = $_POST['content'];
-	$description = $_POST['description'];
+	$title = str_replace("\\'", "'", str_replace("\\\"", "\"", $_POST['title']));
+	$content = str_replace("\\'", "'", str_replace("\\\"", "\"", $_POST['content']));
+	$description = str_replace("\\'", "'", str_replace("\\\"", "\"", $_POST['description']));
 	$post = true;
 	$status = "Posted!";
 	if (isset($_POST['save']))
