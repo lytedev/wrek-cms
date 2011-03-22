@@ -16,12 +16,12 @@ addcfg("configured", false);
 // Site - Basic Site Configuration Variables
 addcfg("root", ".");
 addcfg("sitename", "wrek");
-addcfg("sitedescription", "A wrek-based website.");
+addcfg("sitedescription", "A wrek-based site.");
 
 // Admin - Login Information for Admin Page, "admin.php"
 addcfg("username", "admin"); // Change This!
-addcfg("password", "root"); // Change This!
-addcfg("passwordismd5", false); // Recommended: true
+addcfg("password", "password"); // Change This!
+addcfg("passwordismd5", false); // Recommended: true, but if set to true, cfg("password") must be an md5 hash, not the password string
 
 // Data - Database Connection Details
 addcfg("dbhost", "");
