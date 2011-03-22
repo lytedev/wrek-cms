@@ -30,9 +30,9 @@ addcfg("dbpass", "");
 addcfg("dbname", "");
 
 // Blog - Various Blog Control Variables
-addcfg("disqussn", ""); // disqus.com
+addcfg("disqussn", ""); // disqus.com forum shortname
 
-addcfg("twitterun", ""); // twitter.com
+addcfg("twitterun", ""); // twitter.com username
 
 addcfg("ldtfmt", "l, F dS, Y g:i a");
 addcfg("sdtfmt", "j.n.y g:i a");
