@@ -59,7 +59,7 @@ else
 
 function query($query)
 {
-	return mysql_query($query) or die("Query Failed: " . $query);
+	return mysql_query($query);
 }
 
 function result($results, $index, $column)
