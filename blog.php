@@ -7,8 +7,8 @@ if (isset($_GET['p']))
 {
 	$post = getPost($_GET['p'], cfg("ldtfmt"));
 	echoPost($post, true);
-	if ($post['comments'] === true && cfg("enabledisqus") === true)
-	{ echo $post['id']; 
+	if ($post['comments'] === true && cfg("disqussn") != "")
+	{ 
 	?>
 	<hr />
 	<br />
@@ -16,9 +16,12 @@ if (isset($_GET['p']))
 	<script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 		var disqus_shortname = '<?php ecfg("disqussn"); ?>'; // required: replace example with your forum shortname
+		
+		// Disqus not working? Enable this and try again. Once it works, disable this and see if it still works.
+		//   var disqus_developer = 1;
 
 		// The following are highly recommended additional parameters. Remove the slashes in front to use.
-		var disqus_identifier = '<?php echo $post['id']; ?>';
+		var disqus_identifier = 'wrek_post_<?php echo $post['id']; ?>';
 		// var disqus_url = 'http://example.com/permalink-to-page.html';
 		(function() {
 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
