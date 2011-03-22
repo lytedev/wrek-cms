@@ -11,7 +11,7 @@ See "config.php" for details
 */
 
 // ************ Only remove once the installation script tells you so! ************
-// addcfg("configured", false);
+addcfg("configured", false);
 
 // Site - Basic Site Configuration Variables
 addcfg("root", ".");
