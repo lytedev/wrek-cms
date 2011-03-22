@@ -80,6 +80,7 @@ button {  width: auto; overflow: visible; }
 .clearfix { zoom: 1; }
 
 body, html {
+<<<<<<< HEAD
 font-size: 13px;
 font-family: 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
 background-color: #333;
@@ -145,10 +146,65 @@ border-bottom: solid 1px #111;
 nav {
 font-size: 24px;
 padding: 20px 0;
+=======
+background-color: #333;
+color: #ccc;
+font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+font-size: 13px;
+text-shadow: #000 1px 1px 0px;
+line-height: 1.2em;
+}
+
+a {
+color: #fa0;
+}
+
+#container {
+width: 760px;
+margin: 0 auto;
+padding: 0 10px;
+}
+
+header {
+border-bottom: solid 1px #111;
+}
+
+#title {
+font-size: 48px;
+text-shadow: #444 0px 1px 1px;
+padding: 20px 0;
+line-height: 1.2em;
+}
+
+#title a {
+color: #111;
+}
+
+/* What an odd reference... */
+#padme {
+padding: 30px 0;
+text-align: right;
+}
+
+/* Answer ain't here... or is it? */
+#debug-stick {
+bottom: 0px; 
+azimuth: center; 
+display: none; 
+accelerator: true; /* Why is a decrepit property like this here? */
+size: 8.5in 11in; /* And this? Any guesses yet? */
+stress: 100; /* You'll never get it unless you're one of us. */
+}
+
+nav {
+font-size: 18px;
+margin-bottom: 20px;
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 
 nav a {
 color: #fff;
+<<<<<<< HEAD
 text-shadow: #111 0px 1px 1px;
 padding-bottom: 18px;
 }
@@ -235,6 +291,112 @@ margin: 5px;
 
 .button:hover {
 border: solid 1px #fff;
+=======
+padding-right: 10px;
+text-shadow: #111 0px 1px 1px;
+}
+
+nav a:hover {
+color: #fa0;
+}
+
+#main {
+border-top: solid 1px #555;
+border-bottom: solid 1px #111;
+padding: 20px 0 15px 0;
+}
+
+.column, .half-column, .full-column {
+text-align: justify;
+}
+
+.quarter-column {
+width: 175px;
+float: left;
+}
+
+.column {
+width: 240px;
+float: left;
+}
+
+.half-column {
+width: 370px;
+float: left;
+}
+
+.three-quarter-column {
+width: 565px;
+float: left;
+}
+
+.full-column {
+width: 100%;
+float: left;
+}
+
+.column h2, .quarter-column h2 {
+text-align: center;
+}
+
+.column-spacer {
+width: 20px;
+float: left;
+}
+
+h2 {
+font-size: 24px;
+color: #fa0;
+text-shadow: #111 0px 1px 1px;
+margin-bottom: 10px;
+}
+
+.full-column h2 {
+}
+
+p {
+padding: 0.5em 0;
+}
+
+.center {
+text-align: center;
+}
+
+.button {
+border: solid 1px #111;
+color: #ccc;
+padding: 4px 15px;
+font-size: 13px;
+background: url('../images/button.png');
+}
+
+.wide-button {
+width: 100%;
+}
+
+footer {
+border-top: solid 1px #555;
+padding: 20px 0;
+font-size: 11px;
+color: #888;
+}
+
+footer p {
+padding: 0 !important;
+margin: 0 !important;
+}
+
+.dark {
+background-color: #222;
+border: solid 1px #383838;
+padding: 10px;
+width: 153px;
+color: #666;
+}
+
+h3 {
+color: #fa0;
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 
 @media all and (orientation:portrait) { 

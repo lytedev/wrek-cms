@@ -1,5 +1,6 @@
 <?php 
 
+<<<<<<< HEAD
 // Recommendation: Do not edit! 
 
 session_start();
@@ -21,11 +22,18 @@ else
 	exit(0);
 }
 
+=======
+session_start();
+require_once("config.php");
+require_once("data.php");
+
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 // Login/Registration Functions
 $loggedIn = false;
 $loggedInUser = null;
 $loginError = "";
 
+<<<<<<< HEAD
 if (isset($_GET['logout']))
 {
 	logout();
@@ -79,6 +87,33 @@ function login($username, $password, $bySession = false)
 	else if ($username == cfg("username") && $password != cfg("password"))
 	{
 		$loginError = "Invalid Password";
+=======
+function isLoggedIn()
+{
+	return $loggedIn;
+}
+
+function login($username, $password)
+{
+	$password = md5($password);
+	$username = safe($username);
+	$user = getUser($username, true);
+	if ($user === null)
+	{
+		$loginError = "Invalid Username";
+	}
+	else 
+	{
+		if ($password == $user['password'])
+		{
+			$loggedInUser = $user;
+			return;
+		}
+		else
+		{
+			$loginError = "Invalid Password";
+		}
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 	}
 	session_destroy();
 }
@@ -90,7 +125,11 @@ function register($username, $password)
 	$user = getUser($username, true);
 	if ($user === null)
 	{
+<<<<<<< HEAD
 		// addUser($username, $password);
+=======
+		addUser($username, $password);
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 		return;
 	}
 	else
@@ -102,9 +141,13 @@ function register($username, $password)
 
 if (isset($_SESSION['username']) && isset($_SESSION['password']))
 {
+<<<<<<< HEAD
 	login($_SESSION['username'], $_SESSION['password'], true);
 	unset($_POST['username']);
 	unset($_POST['password']);
+=======
+	login($_SESSION['username'], $_SESSION['password']);
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 else if (isset($_POST['username']) && isset($_POST['password']))
 {
@@ -122,6 +165,7 @@ else
 // Post Functions
 $canLose = true;
 
+<<<<<<< HEAD
 function echoPost(&$post, $entirePost = false)
 {	
 	if ($post && $post !== null && count($post) > 1)
@@ -283,6 +327,59 @@ new TWTR.Widget({
   }
 }).render().setUser('<?php echo $username; ?>').start();
 </script><?php
+=======
+function echoPost($post, $entirePost = false)
+{	
+	if ($post && $post !== null)
+	{
+		if ($entirePost)
+		{ ?>
+		
+			<h2 class="post-title"><?php echo $post['title']; ?></h2>
+			<p><?php echo $post['date']; ?></p>
+			<?php echo $post['content']; ?>
+		
+		<?php }
+		else
+		{ ?>
+		
+			<h3 class="post-title"><?php echo $post['title']; ?></h3>
+			<?php echo $post['description']; ?>
+			
+		<?php }	
+	}
+	else	
+	{
+		userLost();
+	}
+}
+
+function echoPosts($numToShow, $entirePost = false)
+{
+	$posts = getPosts($numToShow);
+	for ($i = 0; $i < count($posts); $i++)
+	{
+		echoPost($posts[$i], $entirePost, $noLost);
+	}
+	if (count($posts) < 1)
+	{
+		userLost();
+	}
+}
+
+function userLost()
+{
+	global $canLose;
+	if ($canLose)
+	{
+		echo "<h2>You're Lost</h2>";
+		echo "<p>I'm afraid there's nothing here... strange.</p>";
+		echo "<p>Perhaps you've performed some sort of invalid search? ";
+		echo "Maybe the posts you're trying to view were deleted? ";
+		echo "It was probably just one post though. Maybe I should change that grammar.</p>";
+		echo "<p>Well, I'm sorry you've lost my post... wait, you lost my post? Go find it!</p>";
+	}
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
 }
 
 ?>

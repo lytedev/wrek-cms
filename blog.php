@@ -1,5 +1,6 @@
 <?php require_once("header.php"); ?>
 
+<<<<<<< HEAD
 
 <?php 
 
@@ -46,3 +47,22 @@ else
 require_once("footer.php"); 
 
 ?>
+=======
+<div class="three-quarter-column">
+	<?php 
+	
+	if (isset($_GET['p']))
+	{
+		echoPost(getPost($_GET['p']));
+	}
+	else 
+	{
+		echoPosts(cfg("maxposts")); 
+	}
+	
+	?>
+	<!-- It's here for a reason. -->
+</div>
+
+<?php require_once("footer.php"); ?>
+>>>>>>> cdb8935787db00c2e4c0a9cdf23cce2533d5e86f
