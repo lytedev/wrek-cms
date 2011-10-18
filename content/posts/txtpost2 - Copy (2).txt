@@ -1,0 +1,14 @@
+Title: Text-Based Post
+Description: A test post in text format. 
+
+Metadata goes at the top, and content goes down here! You can put html and whatever you want in here.
+
+Cool, no? But p tags are already inserted where newlines are. So don't worry about that. =)
+
+<small>Tiny</small>
+
+<b>Bold</b>
+
+<h3>Section 9</h3><hr />
+
+Simple new section/subsection/whatever.
