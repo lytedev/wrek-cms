@@ -1,5 +1,0 @@
-AuthUserFile ./.htpasswd
-AuthName "Access Forbidden"
-AuthType Basic
-
-require valid-user

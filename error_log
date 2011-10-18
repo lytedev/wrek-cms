@@ -1,4 +1,0 @@
-[12-Oct-2011 01:37:20] PHP Parse error:  syntax error, unexpected $end in /home/lytedev/public_html/php/lib.php on line 119
-[12-Oct-2011 01:37:47] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/lytedev/public_html/php/mysql.php on line 21
-[13-Oct-2011 11:20:57] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/lytedev/public_html/index.php on line 25
-[13-Oct-2011 11:20:57] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/lytedev/public_html/index.php:25) in /home/lytedev/public_html/functions.php on line 3
