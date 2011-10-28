@@ -12,7 +12,8 @@ DEFINE("POSTS_DIRECTORY", CONTENT_DIRECTORY . "posts/");
 DEFINE("PAGES_DIRECTORY", CONTENT_DIRECTORY . "pages/");
 DEFINE("LINKS_DIRECTORY", CONTENT_DIRECTORY . "links/");
 DEFINE("THEMES_DIRECTORY", CONTENT_DIRECTORY . "themes/");
-DEFINE("TITLE SEPARATOR", " - ");
+DEFINE("BLOG_URL", CONTENT_DIRECTORY . "blog/");
+DEFINE("TITLE_SEPARATOR", " - ");
 
 DEFINE("SETTINGS_FILE", CONTENT_DIRECTORY . "settings.txt");
 
@@ -58,6 +59,12 @@ function themeFile($i) {
 }
 
 function getHeader() {
+	if (($p = currentPage()) != false) {
+		setSubtitle($p->title);
+	} else if (($p = currentPost()) != false) {
+		setSubtitle($p->title);		
+	}
+
 	if (file_exists($f = getThemeFile("header.php"))) {
 		require($f);
 	} else { // Default Header 
@@ -80,21 +87,16 @@ function getHeader() {
 <body>
 	<div id="container">
 		<header>
-			<div class="wrapper">
-				<h1 id="logo"><a href="<?php echo getRoot(); ?>" title="<?php echo getTitle() . " Home"; ?>"><?php echo getTitle(); ?></a></h1>
-				<?php printNavigation(); ?>
-			</div>
+			<h1 id="logo"><a href="<?php echo getRoot(); ?>" title="<?php echo siteTitle() . " Home"; ?>"><?php echo siteTitle(); ?></a></h1>
+			<?php printNavigation(); ?>
 		</header>
 		<div id="main" role="main">
-			<div class="wrapper">
 	<?php }
 }
 
 function contentType() {
-if (getArg(0) == "post") {
+if (getArg(0) == "blog") {
 	return getArg(1) != false ? "post" : "blog";
-} else if (getArg(0) == "blog") {
-	return "blog";
 } else if (strlen(getArg(0)) > 0) {
 	return "page";
 } else if (getArg(0) == false) { 
@@ -146,29 +148,21 @@ function getFooter() {
 		require($f);
 	} else { // Default Footer
 	?>
-			</div>
 		</div>
 	</div>
 	<footer>
-		<div class="wrapper">
-			<div id="copyright">
-				Copyright &copy <?php echo getTitle(); ?> <?php echo date('Y'); ?>
-			</div>
-			<nav id="footer-nav">
-			
-			<?php printLinks(); ?>
-			
-			</nav>
+		<div id="copyright">
+			Copyright &copy <?php echo getTitle(); ?> <?php echo date('Y'); ?>
 		</div>
+		<nav id="footer-nav">
+		
+		<?php printLinks(); ?>
+		
+		</nav>
 	</footer>
 	<script defer src="lib/js/plugins.js"></script>
+	<!-- Link your scripts here! -->
 	<?php if (file_exists(currentThemeDirectory() . "scripts.php")) { require(currentThemeDiretory() . "scripts.php"); } ?>
-	<?php /* <script> // Change UA-XXXXX-X to be your site's ID
-	window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-	Modernizr.load({
-		load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-	});
-	</script> */ ?>
 	<!--[if lt IE 7 ]>
 		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

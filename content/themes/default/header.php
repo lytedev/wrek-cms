@@ -18,7 +18,7 @@
 	<div id="container">
 		<header>
 			<div class="wrapper">
-				<h1 id="logo"><a href="<?php echo getRoot(); ?>" title="<?php echo getTitle() . " Home"; ?>"><?php echo getTitle(); ?></a></h1>
+				<h1 id="logo"><a href="<?php echo getRoot(); ?>" title="<?php echo siteTitle() . " Home"; ?>"><?php echo siteTitle(); ?></a></h1>
 				<nav>
 					<div id="nav-links">
 						<?php printPageLinks(); ?>

@@ -5,6 +5,7 @@
 // -> accesses the posts properties. 
 
 $this->title = "Post Title";
+$this->viewable = true;
 $this->description = "A simple test post on the wrek CMS showing some capabilities of the default theme.";
 $this->content = '<p>As you noticed, we can do HTML here.</p>
 

@@ -13,6 +13,7 @@ public $date;
 public $author;
 public $image;
 public $show;
+public $viewable;
 public $file; 
 public $userdata;
 
@@ -45,7 +46,7 @@ public $userdata;
 	}
 	
 	function getPermalink($isPost = true) {	
-		return $isPost ? getRoot() . "post/" . $this->link_id : getRoot() . $this->link_id;
+		return $isPost ? getRoot() . "blog/" . $this->link_id : getRoot() . $this->link_id;
 	}
 	
 	// Functions
@@ -80,7 +81,8 @@ public $userdata;
 			$this->date = $this->getUserdata("date") != false ? date(getSetting("date_time_fmt", strtotime(getUserdata("date")))) : filectime($this->file);
 			$this->author = $this->getUserdata("author") != false ? $this->getUserdata("author") : "admin";
 			$this->image = $this->getUserdata("image") != false ? $this->getUserdata("image") : "";
-			$this->show = $this->getUserdata("show") != false ? $this->getUserdata("show") : true;
+			$this->show = $this->getUserdata("show") != false ? $this->getUserdata("show") == 1 : true;
+			$this->viewable = $this->getUserdata("viewable") != false ? $this->getUserdata("viewable") == 1 || strtolower($this->getUserdata("viewable")) == "true": true;
 			
 			$this->content = $str;
 		}
@@ -94,6 +96,7 @@ public $userdata;
 			$this->author = "admin";
 			$this->image = "";
 			$this->show = true;
+			$this->viewable = true;
 			include $this->getFile();
 			
 			if ($this->link_id == "DUMMY") {
@@ -110,6 +113,7 @@ public $userdata;
 			$this->author = "admin";
 			$this->image = "";
 			$this->show = true;
+			$this->viewable = true;
 			// echo "I AM HERE"; TODO: HTML Pages/Posts/Stuff
 		}
 		$this->setUserdata("wrek_full_post", false);
@@ -119,7 +123,7 @@ public $userdata;
 		if ($this->getFiletype() == "html") {
 			include($this->file);
 			return;
-		} else if (!$this->show) { return; }
+		} else if (!$this->viewable) { return; }
 		$this->setUserdata("wrek_full_post", true);
 		if ($f = getThemeFile("post.php")) { 
 			require($f); 
@@ -130,13 +134,13 @@ public $userdata;
 			<div class="post-date"><?php echo date(getSetting("date_time_fmt"), $this->date); ?>
 			<div class="post-content"><?php echo $this->content; ?></div>
 		<?php }
-	}
+	} 
 	
 	function showPage() {
 		if ($this->getFiletype() == "html") {
 			include($this->file);
 			return;
-		} else if (!$this->show) { return; }
+		} else if (!$this->viewable) { return; }
 		$this->setUserdata("wrek_full_post", true);
 		if ($f = getThemeFile("page.php")) { 
 			require($f); 
@@ -150,7 +154,7 @@ public $userdata;
 	}
 	
 	function showSmall() {
-		if (!$this->show) { return; }
+		if (!$this->viewable) { return; }
 		else if ($this->getFiletype() == "html") {
 			include($this->file);
 			return;
@@ -171,7 +175,7 @@ public $userdata;
 		if ($this->getFiletype() == "html") {
 			include($this->file);
 			return;
-		} else if (!$this->show) { return; } 
+		} else if (!$this->viewable || !$this->show) { return; } 
 		if ($f = getThemeFile("pagelink.php")) { 
 			require($f); 
 		} else {
@@ -189,7 +193,7 @@ public $userdata;
 		if ($this->getFiletype() == "html") {
 			include($this->file); // TODO: Fix - ATM Broken
 			return;
-		} else if (!$this->show) { return; } 
+		} else if (!$this->show || !$this->viewable) { return; } 
 		if ($f = getThemeFile("link.php")) { 
 			require($f); 
 		} else {
@@ -218,11 +222,6 @@ public $userdata;
 		}
 
 		return "$difference $periods[$j] $tense";
-	}
-	
-	function isFull()
-	{
-		return $this->getUserdata("wrek_full_post");
 	}
 	
 } // End Post class
@@ -260,15 +259,11 @@ function getPostBySafeURL($safeURL) {
 
 function getLatestPosts($offset = 0, $count = 10) {
 	$files = array();
-	if ($handle = opendir(POSTS_DIRECTORY))
-	{
-		while ($file = readdir($handle)) 
-		{
-			if ($file != "." && $file != ".." && $file != "index.php") 
-			{
+	if ($handle = opendir(POSTS_DIRECTORY)) {
+		while ($file = readdir($handle)) {
+			if ($file != "." && $file != ".." && $file != "index.php") {
 				$id = filectime(POSTS_DIRECTORY . $file);
-				while (isset($files[$id]))
-				{
+				while (isset($files[$id])) {
 					$id++;
 				}
 				$files[$id] = $file;
@@ -280,35 +275,30 @@ function getLatestPosts($offset = 0, $count = 10) {
 		$f2 = array();
 		$i = 0;
 		$j = 0;
-		foreach ($files as $file) 
-		{
+		foreach ($files as $file) {
 			$p = loadPostFromFile(POSTS_DIRECTORY . $file);
-			if ($i >= $offset && $p->show)
-			{
+			if ($i >= $offset && $p->show) {
 				$i++;
-				$f2[$j++] = $p;
+				$f2[$j] = $p;
 				$p->setUserdata("local_id", $j);
+				$j++;
 			}
-			else if ($i >= offset)
-			{
+			else if ($i >= offset) {
 				$i++;
 			}
 		}
 		if ($offset > 0) {
 			$f2[0]->setUserdata("_wrek_less_posts", true);
 		}
-		if ($j >= $count)
-		{
+		if ($j >= $count) {
 			$f2[0]->setUserdata("_wrek_more_posts", true);
-			return $f2;
 		}
 		return $f2;
 	}
 	return false;
 }
 
-function printLatestPosts($o = 0)
-{
+function printLatestPosts($o = 0) {
 	$p = getLatestPosts($o, getSetting("posts_per_page"));
 	for ($i = 0; $i < min(count($p), getSetting("posts_per_page")); $i++)
 	{

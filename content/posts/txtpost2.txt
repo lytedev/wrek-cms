@@ -1,5 +1,6 @@
 Title: Text-Based Post
 Description: A test post in text format. 
+Viewable: TRUE
 
 Metadata goes at the top, and content goes down here! You can put html and whatever you want in here.
 
