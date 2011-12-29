@@ -284,6 +284,7 @@ function getPostBySafeURL($safeURL) {
 }
 
 function getLatestPosts($offset = 0, $count = 10) {
+    if ($offset > 0) $offset++;
 	$files = array();
 	if ($handle = opendir(POSTS_DIRECTORY)) {
 		while ($file = readdir($handle)) {

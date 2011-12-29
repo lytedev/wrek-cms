@@ -96,7 +96,7 @@ function getHeader() {
 
 function contentType() {
 if (getArg(0) == "blog") {
-	return getArg(1) != false ? "post" : "blog";
+	return getArg(1) != false && getArg(2) == false ? "post" : "blog";
 } else if (strlen(getArg(0)) > 0) {
 	return "page";
 } else if (getArg(0) == false) { 
