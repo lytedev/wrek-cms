@@ -78,7 +78,7 @@ public $userdata;
 			$this->content = $this->getUserdata("content") != false ? getUserdata("content") : "EMPTY POST"; 
 			$this->description = $this->getUserdata("description") != false ? $this->getUserdata("description") : "";
 			$this->link_id = $this->getUserdata("link id") != false ? $this->getUserdata("link id") : safeURL($this->title);
-			$this->date = $this->getUserdata("date") != false ? date(getSetting("date_time_fmt", strtotime(getUserdata("date")))) : filectime($this->file);
+			$this->date = $this->getUserdata("date") != false ? date(getSetting("date_time_fmt", strtotime($this->getUserdata("date")))) : filectime($this->file);
 			$this->author = $this->getUserdata("author") != false ? $this->getUserdata("author") : "admin";
 			$this->image = $this->getUserdata("image") != false ? $this->getUserdata("image") : "";
 			$this->show = $this->getUserdata("show") != false ? $this->getUserdata("show") == 1 : true;
@@ -121,7 +121,7 @@ public $userdata;
 	
 	function show() {
 		if ($this->getFiletype() == "html") {
-			include($this->file);
+			require($this->file);
 			return;
 		} else if (!$this->viewable) { return; }
 		$this->setUserdata("wrek_full_post", true);
@@ -138,7 +138,7 @@ public $userdata;
 	
 	function showPage() {
 		if ($this->getFiletype() == "html") {
-			include($this->file);
+			require($this->file);
 			return;
 		} else if (!$this->viewable) { return; }
 		$this->setUserdata("wrek_full_post", true);
@@ -171,11 +171,11 @@ public $userdata;
 		<?php }	
 	}
 	
-	function showPageLink($i = 1, $num = 2) {
+	function getPageLink($i = 1, $num = 2) {
 		if ($this->getFiletype() == "html") {
 			include($this->file);
 			return;
-		} else if (!$this->viewable || !$this->show) { return; } 
+		} else if (!$this->viewable) { return; } 
 		if ($f = getThemeFile("pagelink.php")) { 
 			require($f); 
 		} else {
@@ -185,19 +185,45 @@ public $userdata;
 			if ($i == 0 && $i == ($num - 1)) { $c .= " "; } 
 			if ($q && $i == ($num - 1)) { $c .= "last-page-link"; } 
 			if ($q) { $c .= "\""; }
-			echo "<a " . $c . "title=\"" . $this->description . "\" href=\"" . $this->getPermalink(false) . "\">" . $this->title . "</a>";
+			return "<a " . $c . "title=\"" . $this->description . "\" href=\"" . $this->getPermalink(false) . "\">" . $this->title . "</a>";
 		}
 	}
 	
+	function getPostLink($i = 1, $num = 2) {
+		if ($this->getFiletype() == "html") {
+			include($this->file);
+			return;
+		} else if (!$this->viewable) { return; } 
+		if ($f = getThemeFile("postlink.php")) { 
+			require($f); 
+		} else {
+			$q = ($i == 0 || $i == ($num - 1));
+			$c = $q ? "class=\"" : "";
+			if ($q && $i == 0) { $c .= "first-page-link"; } 
+			if ($i == 0 && $i == ($num - 1)) { $c .= " "; } 
+			if ($q && $i == ($num - 1)) { $c .= "last-page-link"; } 
+			if ($q) { $c .= "\""; }
+			return "<a " . $c . "title=\"" . $this->description . "\" href=\"" . $this->getPermalink(true) . "\">" . $this->title . "</a>";
+		}
+	}
+	
+	function showPageLink($i = 1, $num = 2) {
+		echo $this->getPageLink($i, $num);
+	}
+	
 	function showLink() {
+		echo $this->getLink();
+	}
+	
+	function getLink() {
 		if ($this->getFiletype() == "html") {
 			include($this->file); // TODO: Fix - ATM Broken
 			return;
-		} else if (!$this->show || !$this->viewable) { return; } 
+		} else if (!$this->viewable) { return; } 
 		if ($f = getThemeFile("link.php")) { 
 			require($f); 
 		} else {
-			echo "<a target=\"_blank\" title=\"" . $this->description . "\" href=\"" . $this->content . "\">" . $this->title . "</a>";
+			return "<a target=\"_blank\" title=\"" . $this->description . "\" href=\"" . $this->content . "\">" . $this->title . "</a>";
 		}
 	}
 	
@@ -270,7 +296,7 @@ function getLatestPosts($offset = 0, $count = 10) {
 			}
 		}
 		closedir($handle);
-		ksort($files);
+		krsort($files);
 		$reallyLastModified = end($files);
 		$f2 = array();
 		$i = 0;
@@ -290,7 +316,7 @@ function getLatestPosts($offset = 0, $count = 10) {
 		if ($offset > 0) {
 			$f2[0]->setUserdata("_wrek_less_posts", true);
 		}
-		if ($j >= $count) {
+		if ($j > $count) {
 			$f2[0]->setUserdata("_wrek_more_posts", true);
 		}
 		return $f2;

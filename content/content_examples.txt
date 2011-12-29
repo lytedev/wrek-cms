@@ -11,7 +11,7 @@ setting_name: value
 posts_per_page	:		5
 site_name       :		CAKE TASTES GREAT
 
-# nicely aligned settings
+# Cicely aligned settings... sometimes
 site_description: 			For Science
 site_salutation       :			Suck it up!
 valuable_object:			gold
@@ -70,8 +70,10 @@ See the "default" theme for an example, as a theme is generally made up of multi
 #####################################################################################
 Link Example: A very simple two lines. 
 
+Title: Twitter
+Description: Follow us on Twitter!
+
 http://lytedev.com
-lytedev
 
 
 #####################################################################################
@@ -81,6 +83,6 @@ Title: A humble page.
 Description: A simple page.
 Image: http://i.imgur.com/just_kidding
 
-Page content from here on down! Remember, each page gets its own text/html/php file.
+Page content from here on down! Remember, each page gets its own text or html or php file.
 
 

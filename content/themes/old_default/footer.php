@@ -1,14 +1,15 @@
-			
+			<div id="very-bottom"></div>
+			</div>
 		</div>
 	</div>
 	<footer>
 		<div class="wrapper">
-			<nav id="footer-nav">			
-				<?php printLinks(); ?>			
-			</nav>
 			<div id="copyright">
 				Copyright &copy <?php echo siteTitle(); ?> <?php echo date('Y'); ?>
 			</div>
+			<nav id="footer-nav">			
+				<?php printLinks(); ?>			
+			</nav>
 		</div>
 	</footer>
 	<script defer src="lib/js/plugins.js"></script>

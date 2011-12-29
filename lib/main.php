@@ -81,7 +81,7 @@ function getHeader() {
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<?php echo ($f = themeFile("style.css")) != false ? "<link rel=\"stylesheet\" href=\"" . $f . "\" />" : ""; ?>
-	<?php echo ($f = "favicon.ico") != false ? "<link rel=\"shortcut icon\" href=\"" . $f . "\" />" : ""; ?>
+	<?php echo ($f = themeFile("favicon.ico")) != false ? "<link rel=\"shortcut icon\" href=\"" . $f . "\" />" : ""; ?>
 	<script src="<?php echo getRoot(); ?>lib/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 <body>
@@ -135,8 +135,10 @@ function currentPage() {
 
 function getContent() { 
 if (contentType() == "post") {
+	if (currentPost() == false) { echo "Could not find specified post!"; return false; }
 	currentPost()->show(); 
 } else if (contentType() == "page") {
+	if (currentPost() == false) { echo "Could not find specified page!"; return false; }
 	currentPage()->showPage();	
 } else { // Index
 	printLatestPosts();

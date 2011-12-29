@@ -46,6 +46,6 @@ function showPageLink($i = 1, $num = 2) {
 <div class="s-box third-grid"><div class="inner-s-box">Aww yeah.</div></div>
 <div class="s-box third-grid"><div class="inner-s-box">Built-in grid system and other awesome styling classes!</div></div>
 
-<div class="s-box third-grid first-grid-item"><div class="inner-s-box">Pretty cool!</div></div>
-<div class="s-box third-grid"><div class="inner-s-box">The HTML sure looks odd...</div></div>
-<div class="s-box third-grid"><div class="inner-s-box">But for an initial version, not too bad!</div></div>';
+<div class="s-box half-grid first-grid-item"><div class="inner-s-box">Pretty cool!</div></div>
+<div class="s-box half-grid"><div class="inner-s-box">The HTML sure looks odd...</div></div>
+<div class="s-box half-grid first-grid-item"><div class="inner-s-box">But for an initial version, not too bad!</div></div>';

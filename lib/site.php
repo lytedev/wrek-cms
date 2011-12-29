@@ -32,6 +32,31 @@ function printNavigation()
 	echo "</nav>";
 }
 
+function getAllPageLinks() {
+	$files = array();
+	if ($handle = opendir(PAGES_DIRECTORY))
+	{
+		$str = "";
+		while ($file = readdir($handle)) 
+		{
+			if ($file == "." || $file == ".." || $file == "index.php") { continue; }
+			$post = new Post();
+			$post->setFile(PAGES_DIRECTORY . $file);
+			$post->load();
+			if ($post != false)
+			{
+				$pl = $post->getPageLink();
+				if ($pl != "")
+				{
+					$str .= $pl . "<br />";
+				}
+			}
+		}
+		return $str;
+	}
+	return false;
+}
+
 function getPages() {
 	$files = array();
 	if ($handle = opendir(PAGES_DIRECTORY))
@@ -44,8 +69,10 @@ function getPages() {
 			$post = new Post();
 			$post->setFile(PAGES_DIRECTORY . $file);
 			$post->load();
-			$p[$i] = $post;
-			$i++;
+			if ($post->show == true) {
+				$p[$i] = $post;
+				$i++;
+			}
 		}
 		return $p;
 	}
@@ -64,7 +91,7 @@ function getPageBySafeURL($safeURL) {
 			$post = new Post();
 			$post->setFile(PAGES_DIRECTORY . $file);
 			$post->load();
-			if (safeURL($post->title) == $safeURL)
+			if (safeURL($post->link_id) == $safeURL)
 			{
 				return $post;
 			}
@@ -99,12 +126,65 @@ function getLinks() {
 			$post = new Post();
 			$post->setFile(LINKS_DIRECTORY . $file);
 			$post->load(true);
-			$p[$i] = $post;
-			$i++;
+			if ($post->show)
+			{
+				$p[$i] = $post;
+				$i++;
+			}
 		}
 		return $p;
 	}
 	return false;
+}
+
+function getAllLinkLinks() {
+	$files = array();
+	if ($handle = opendir(LINKS_DIRECTORY))
+	{
+		$str = "";
+		while ($file = readdir($handle)) 
+		{
+			if ($file == "." || $file == ".." || $file == "index.php") { continue; }
+			$post = new Post();
+			$post->setFile(LINKS_DIRECTORY . $file);
+			$post->load(true);
+			if ($post != false)
+			{
+				$pl = $post->getLink();
+				if ($pl != "")
+				{
+					$str .= $pl . "<br />";
+				}
+			}
+		}
+		return $str;
+	}
+	return false;	
+}
+
+function getAllPostLinks() {
+	$files = array();
+	if ($handle = opendir(POSTS_DIRECTORY))
+	{
+		$str = "";
+		while ($file = readdir($handle)) 
+		{
+			if ($file == "." || $file == ".." || $file == "index.php") { continue; }
+			$post = new Post();
+			$post->setFile(POSTS_DIRECTORY . $file);
+			$post->load(true);
+			if ($post != false)
+			{
+				$pl = $post->getPostLink();
+				if ($pl != "")
+				{
+					$str .= $pl . "<br />";
+				}
+			}
+		}
+		return $str;
+	}
+	return false;	
 }
 
 function printLinks()

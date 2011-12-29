@@ -3,10 +3,16 @@ current_theme: 		default
 
 # Site Settings
 site_title: 		Wrek Site
-site_description: 	A basic wrek site.
-site_slogan: 		The bomb.
-site_author: 		wrek
-site_root: 			/wrek/ 							# Include Trailing Slash!
-site_url: 			http://192.168.1.50/wrek2/		# Include Trailing Slash!
+site_description: 	Another wrek site.
+site_slogan: 		We're the best!
+site_author: 		Wrek
+site_root: 			/								# Include Trailing Slash!
+site_url: 			http://yoursite.com/			# Include Trailing Slash!
+
+# Other Settings
 posts_per_page: 	5
 date_time_fmt: 		F j, Y g:ia
+
+#Custom Settings
+unibrows_allowed: 	18
+mother_maiden_name: jello

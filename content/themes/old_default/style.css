@@ -64,56 +64,49 @@ td { vertical-align: top; }
    ========================================================================== */
 
 body, html {
-background-color: #fff;
+background-color: #222;
 color: #333;
-font-size: 12px;
-font-family: "Segoe UI", "Lucida Grande", Trebuchet, Helvetica, Arial, sans-serif;
+font-size: 8pt;
+font-family: "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+text-shadow: #eee 1px 1px 0px;
 padding: 0 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-font-weight: normal;
+text-shadow: #888 1px 1px 1px;
+font-weight: bold;
 margin: 0;
 padding: 0;
 }
 
 .bad {
 color: #f10;
+font-size: 12pt;
 font-weight: bold;
 }
 
 .text-input {
 font-family: inherit;
+font-size: 12pt;
 padding: 5px;
 border: solid 1px #888;
 margin-bottom: 3px;
+text-shadow: #fff 0px 1px 1px;
 }
 
 .button {
 font-family: inherit;
+font-size: 12pt;
 padding: 5px 15px;
+text-shadow: #fff 0px 1px 1px;
 }
 
 h1 {
-text-shadow: #ccc 1px 1px 1px;
-font-size: 24px;
+font-size: 18pt;
 }
 
 h2 {
-text-shadow: #ddd 1px 1px 1px;
-font-size: 18px;
-}
-
-h3 {
-font-size: 16px;
-}
-
-a .link {
-color: #06f;
-}
-
-a .link:hover {
-color: inherit;
+font-size: 16pt;
 }
 
 hr {
@@ -122,7 +115,7 @@ margin: 0;
 padding: 0;
 margin-top: 3px;
 margin-bottom: 10px;
-border-top: 0;
+border-top: solid 1px #bbb;
 border-bottom: solid 1px #ddd;
 }
 
@@ -130,70 +123,135 @@ p {
 
 }
 
-pre { 
-font-size: 12px;
+pre, code, kbd, samp { 
 font-family: "Consolas", "Lucida Console", monospace;
-background-color: #eee;
-padding: 10px 5px 1px 5px;
+background: url('img/small-post.png');
+background-repeat: repeat-x;
+background-color: #ddd;
+padding: 10px;
 margin: 0;
 margin-top: 3px;
-line-height: 0.1em;
+border: solid 1px #abc;
 }
 
 a {
 text-decoration: none;
 color: #06f;
+text-shadow: none;
 }
 
 a:hover {
 color: inherit;
+text-shadow: #eee 1px 1px 0px;
 }
 
 #container {
 padding: 20px;
 padding-bottom: 0;
-width: 400px;
+width: 600px;
 margin: 0 auto;
+background-color: #ccc;
+background: url('img/top.png');
+background-repeat: repeat-x;
+background-color: #ccc;
+border-radius: 10px;
 margin-top: 20px;
+border-bottom: solid 1px #aaa;
+}
+
+#very-bottom {
+height: 20px;
+width: 640px;
+border-radius: 0 0 10px 10px;
+position: relative;
+left: -20px;
+background: url('img/very-bottom.png');
+background-repeat: repeat-x;
+background-color: #ccc;
+}
+
+header {
+}
+
+.wrapper {
 }
 
 header .wrapper {
-border-bottom: solid 1px #ddd;
+border-bottom: solid 1px #aaa;
 padding-bottom: 20px;
 }
 
 header a, h1 a {
+color: #06f;
+text-shadow: #999 1px 1px 1px;
 }
 
 header a:hover, h1 a:hover {
+color: #555;
+text-shadow: #e5e5e5 0px 1px 1px, #999 1px 1px 1px;
 }
 
 #logo a {
-font-size: 32px;
+font-size: 26pt;
 float: left;
 }
 
+#logo a:hover {
+}
+
+#logo h1 {
+margin: 0;
+padding: 0;
+}
+
 header nav {
+/* font-size: 9pt; */ 
 float: right;
+border-radius: 7px;
 padding: 1px;
+background-color: #999;
 }
 
 header nav a {
 text-align: center;
-padding: 8px 10px;
+border-top: solid 1px #6bf;
+padding: 11px 20px;
+color: #fff;
+text-shadow: #222 1px 1px 0px;
+}
+
+header nav .first-page-link {
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+
+header nav .last-page-link {
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+border-right: none;
 }
 
 header nav a:hover {
 color: #000;
+text-shadow: #ddd 0px 1px 0px;
 background: url('img/nav-hover.png');
 background-repeat: repeat-x;
-background-color: #eee;
+background-color: #b6b6b6;
+border-top: solid 1px #eee;
 }
 
 #nav-links {
-margin-top: 4px;
 float: right;
-padding: 8px 0;
+font-weight: bold;
+padding: 12px 0;
+text-shadow: #333 1px 1px 0px;
+border-radius: 6px;
+border-top: solid 1px #49f;
+border-bottom: solid 1px #06c;
+font-weight: bold;
+background: url('img/nav.png');
+background-repeat: repeat-x;
+background-color: #1c6fff;
 }
 
 #logout {
@@ -205,9 +263,11 @@ top: -4em;
 
 #main {
 /* text-align: justify; */
+font-size: 12pt;
 }
 
 #main .wrapper {
+border-top: solid 1px #ddd;
 padding-top: 20px;
 }
 
@@ -233,16 +293,26 @@ margin-top: 0 !important;
 
 .s-box {
 margin-top: 10px;
+border-bottom: solid 1px #bbb;
+border-radius: 10px;
+font-size: 8pt;
 }
 
 .inner-s-box {
 padding: 10px;
 color: #333;
-background-color: #eee;
+border-bottom: solid 1px #aaa;
+border-top: solid 1px #eee;
+background: url('img/small-post.png');
+background-repeat: repeat-x;
+background-color: #ddd;
+border-radius: 10px;
 }
 
 a:hover .inner-s-box {
-background-color: #f8f8f8;
+background: url('img/small-post-hover.png');
+background-repeat: repeat-x;
+background-color: #e3e3e3;
 }
 
 .post-title {
@@ -251,8 +321,8 @@ float: left;
 
 .post-date {
 /* font-family: "Georgia", "Times New Roman", serif; */
-font-size: 9px;
 float: right;
+font-style: italic;
 color: #555;
 padding-bottom: 2px;
 border-bottom: dotted 1px #888;
@@ -261,23 +331,24 @@ border-bottom: dotted 1px #888;
 a .post-date:hover {
 border-bottom: dotted 1px #08f;
 color: #08f;
+text-shadow: #d4d4d4 1px 1px 0px;
 }
 
 .post-content {
 margin-top: 20px;
 color: #000;
-text-align: justify;
+text-shadow: #ddd 1px 1px 0px;
 }
 
 .half-grid {
-width: 195px;
+width: 245px;
 margin-left: 9px;
 float: left;
 }
 
 .third-grid {
 text-align: left;
-width: 126px;
+width: 193px;
 margin-left: 10px;
 float: left;
 }
@@ -301,14 +372,16 @@ margin-left: 0 !important;
 }
 
 .post-date {
+font-size: 8pt !important;
 }
 
 .post-description {
 margin-top: 10px;
+font-size: 8pt;
 }
 
 .inner-post:hover {
-
+border-top: solid 1px #f8f8f8;
 }
 
 .inner-post:hover .post-title {
@@ -338,40 +411,35 @@ padding-bottom: 14px;
 }
 
 footer .wrapper {
-border-top: solid 1px #ddd;
 color: #888;
+text-shadow: #000 1px 1px 0px;
 padding: 20px 0;
 margin: 0 auto;
-margin-top: 24px;
-width: 400px;
+width: 600px;
 }
 
 footer .wrapper:hover {
 }
 
 footer #copyright {
-/* float: left; 
-*/
-margin-top: 1em;
+float: left;
 }
 
 #footer-nav {
-/*float: right;
-*/
+float: right;
 }
 
 #footer-nav a {
 padding-bottom: 2px;
-border-bottom: solid 1px #ddd;
-margin-right: 8px;
-/* Normally: 
-margin-left: 8px;
-*/
+border-bottom: solid 1px #333;
+margin-left: 1em;
+text-shadow: #000 1px 1px 0px;
 color: inherit;
 }
 
 #footer-nav a:hover {
-color: #333;
+color: #08f;
+text-shadow: #111 1px 1px 0px;
 border-bottom: solid 1px #08f;
 }
 

@@ -1,4 +1,7 @@
-Title: twitter	# This is an example text-format link. 
-Description: @lytedev (Wrek Author) on Twitter
+Title: Twitter	
+Description: Follow @us on Twitter
 
-http://twitter.com/lytedev
+http://twitter.com/us
+
+# This is an example text-format link. 
+# Comments are hashtag-marked. 

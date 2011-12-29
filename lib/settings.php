@@ -26,7 +26,7 @@ function parseSettingLine($line) {
 }
 
 function safeURL($str) {
-	return str_replace(" ", "-", (trim(strtolower(ereg_replace("[^A-Za-z0-9 ]", "", $str)))));
+	return str_replace(" ", "-", (trim(strtolower(ereg_replace("[^A-Za-z0-9\. ]", "", $str)))));
 }
 
 function getSettings() {
