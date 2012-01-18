@@ -6,7 +6,7 @@ site_title: 		Wrek Site
 site_description: 	Another wrek site.
 site_slogan: 		We're the best!
 site_author: 		Wrek
-site_root: 			/           					# Include Trailing Slash!
+site_root: 			/								# Include Trailing Slash!
 site_url: 			http://yoursite.com/			# Include Trailing Slash!
 
 # Other Settings

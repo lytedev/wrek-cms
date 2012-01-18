@@ -1,4 +1,5 @@
 Title: Text-Based Post
+Date: 2012-01-15 12:51:41
 Description: A test post in text format. 
 Viewable: TRUE
 

@@ -11,7 +11,7 @@ setting_name: value
 posts_per_page	:		5
 site_name       :		CAKE TASTES GREAT
 
-# Cicely aligned settings... sometimes
+# Nicely aligned settings... sometimes
 site_description: 			For Science
 site_salutation       :			Suck it up!
 valuable_object:			gold
@@ -23,17 +23,20 @@ a setting with spaces:		It's almost like a cheat code.
 #####################################################################################
 Valid Settings and their Defaults: 
 
-# Wrek Settings 
-# Case insensitive setting names!
-current_theme: default
+# Wrek Settings
+current_theme: 		default
 
 # Site Settings
-site_title: wrek site
-site_description: A basic wrek site.
-site_author: wrek
-site_root: /
-site_url: http://lytedev.com/wrek/
-posts_per_page: 5
+site_title: 		Wrek Site
+site_description: 	Another wrek site.
+site_slogan: 		We're the best!
+site_author: 		Wrek
+site_root: 			/
+site_url: 			http://yoursite.com/
+
+# Other Settings
+posts_per_page: 	5
+date_time_fmt: 		F j, Y g:ia
 
 
 #####################################################################################

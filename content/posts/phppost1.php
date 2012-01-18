@@ -5,6 +5,7 @@
 // -> accesses the posts properties. 
 
 $this->title = "Post Title";
+$this->date = strtotime("2012-01-08 17:04:01");
 $this->viewable = true;
 $this->description = "A simple test post on the wrek CMS showing some capabilities of the default theme.";
 $this->content = '<p>As you noticed, we can do HTML here.</p>

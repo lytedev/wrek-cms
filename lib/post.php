@@ -78,7 +78,7 @@ public $userdata;
 			$this->content = $this->getUserdata("content") != false ? getUserdata("content") : "EMPTY POST"; 
 			$this->description = $this->getUserdata("description") != false ? $this->getUserdata("description") : "";
 			$this->link_id = $this->getUserdata("link id") != false ? $this->getUserdata("link id") : safeURL($this->title);
-			$this->date = $this->getUserdata("date") != false ? date(getSetting("date_time_fmt", strtotime($this->getUserdata("date")))) : filectime($this->file);
+			$this->date = $this->getUserdata("date") != false ? strtotime($this->getUserdata("date")) : filectime($this->file);
 			$this->author = $this->getUserdata("author") != false ? $this->getUserdata("author") : "admin";
 			$this->image = $this->getUserdata("image") != false ? $this->getUserdata("image") : "";
 			$this->show = $this->getUserdata("show") != false ? $this->getUserdata("show") == 1 : true;
@@ -289,7 +289,8 @@ function getLatestPosts($offset = 0, $count = 10) {
 	if ($handle = opendir(POSTS_DIRECTORY)) {
 		while ($file = readdir($handle)) {
 			if ($file != "." && $file != ".." && $file != "index.php") {
-				$id = filectime(POSTS_DIRECTORY . $file);
+                $postdata = loadPostFromFile(POSTS_DIRECTORY . $file);
+				$id = $postdata->date;
 				while (isset($files[$id])) {
 					$id++;
 				}
