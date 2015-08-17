@@ -165,7 +165,7 @@ public $userdata;
 		} else { ?> 
 			<div class="small-post">
 			<?php echo $this->image != "" ? "<img src=\"" . $this->image . "\" />" : ""; ?>
-			<h2 class="post-title"><a href="<?php echo getRoot() . "post/" . $this->link_id; ?>"><?php echo $this->title; ?></a></h2>
+			<h2 class="post-title"><a href="<?php echo $this->getPermalink(); ?>"><?php echo $this->title; ?></a></h2>
 			<div class="post-date"><?php echo $this->timeAgo();/*date(getSetting("date_time_fmt"), $this->date);*/ ?>
 			<div class="post-description"><?php echo $this->description == "" ? $this->content : $this->description; ?></div>
 		<?php }	

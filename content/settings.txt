@@ -1,5 +1,5 @@
 # Wrek Settings
-current_theme: 		default
+current_theme: 		default2
 
 # Site Settings
 site_title: 		Wrek Site
