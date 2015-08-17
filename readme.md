@@ -6,7 +6,15 @@ wrek is a super simple file-based content management system.
 
 `git clone git@github.com:lytedev/wrek-cms.git projectname`
 
-Change the content and host it!
+Change the content and host it at the root of the newly created folder. For
+locally hosting during development, I recommend the following command:
+
+```
+cd projectname
+php -S localhost:8000
+```
+
+Then open your browser so `localhost:8000`.
 
 # Configuration
 
